@@ -66,3 +66,12 @@ Can your function handle a triangle with 500 rows in less than a minute?
             7 4  \
            2 4 6 \
           8 5 9 3' | ruby task3/tryme.rb
+
+You can generate a pyramid for any number of rows like so:
+
+	$ ruby task3/generate_pyramid.rb 5
+
+So you can try out 500 lines like so:
+
+	$ ruby task3/generate_pyramid.rb 500 | ruby task3/tryme.rb 
+

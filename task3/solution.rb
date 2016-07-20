@@ -10,7 +10,7 @@ module Task3
 end
 
 # These classes should be arranged into their own files
-# but for ease of writing and review they are here
+# but for ease of writing and review they are inline
 
 class Traverser
   attr_reader :pyramid
@@ -20,27 +20,24 @@ class Traverser
   end
 
   def path
-	path = [pyramid.lines[0][0]]
-	walk_down(1, 0, path)
+    path = [pyramid.lines[0][0]]
+    walk_down(1, 0, path)
   end
 
   private
 
   def walk_down(level_index, prev_line_index, path)
-	line = pyramid.lines[level_index]
-    number1, number2 = line[prev_line_index], line[prev_line_index + 1]
-    this_line_index = prev_line_index
-	if number2 > number1
-      this_line_index = prev_line_index + 1
-	end
-	path << line[this_line_index]
+    line = pyramid.lines[level_index]
+    this_line_index = index_of_next_largest_number(line, prev_line_index)
+    path << line[this_line_index]
+    level_index += 1
+    pyramid.lines.count != level_index ? walk_down(level_index, this_line_index, path) : path
+  end
 
-	level_index += 1
-    if pyramid.lines.count != level_index
-	  walk_down(level_index, this_line_index, path)
-	end
-
-    path
+  def index_of_next_largest_number(arr, index)
+    number1 = arr[index]
+    number2 = arr[index + 1]
+    number2 > number1 ? (index + 1) : index
   end
 end
 
@@ -51,7 +48,7 @@ class Pyramid
 
   def initialize(str)
     @lines = parse(str)
-    fail(InvalidPyramidException, 'Pyramid does not look right') unless valid?
+    raise(InvalidPyramidException, 'Pyramid does not look right') unless valid?
   end
 
   private

@@ -27,6 +27,10 @@ strings, and the function returns the longest string in that hash.
       # the one line solution
     end
 
+## Solution 2:
+
+    $ ruby task2/tests.rb
+
 ## Task 3:
 
 When starting at the top of the pyramid and moving down the rows in sequential order, we
@@ -38,10 +42,10 @@ chosen the final number in the path can be either the 5 or 9. The maximum sum th
 example can have is 24, as highlighted 4 + 7 + 4 + 9 = 24.
 
 ```
-        4
-       7 4
-      2 4 6
-     8 5 9 3
+   4
+  7 4
+ 2 4 6
+8 5 9 3
 ```
 
 Write a Ruby function that reads in a text file with an arbitrary triangle (similar to the one
@@ -51,3 +55,14 @@ the path when moving from top to bottom.
 Make sure the code is as clean as possible and takes care of all edge cases.
 
 Can your function handle a triangle with 500 rows in less than a minute?
+
+## Solution 3:
+
+    $ ruby task3/tests.rb
+
+    $ ruby task3/tryme.rb task3/example1.txt
+
+    $ echo ' 4   \
+            7 4  \
+           2 4 6 \
+          8 5 9 3' | ruby task3/tryme.rb
